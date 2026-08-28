@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Widget Admin</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f5f3f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .login-box {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 320px;
+        }
+        h1 {
+            color: #8B4513;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+        #password {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        #loginBtn {
+            width: 100%;
+            background: #8B4513;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        #loginBtn:hover {
+            background: #6b3510;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <h1>Chat Widget</h1>
+        <p class="subtitle">Masukkan password untuk mengakses panel admin</p>
+        <input type="password" id="password" placeholder="Password..." autocomplete="off">
+        <button id="loginBtn" onclick="login()">🔓 Login</button>
+    </div>
+    <script>
+        function login() {
+            const pw = document.getElementById('password').value;
+            if (pw === '88888888') { // Password boss
+                // Redirect ke widget editor setelah login
+                window.location.href = '?page=widget';
+            } else {
+                alert('Password salah!');
+            }
+        }
+        
+        // Cek jika sudah login (simple session)
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('page') === 'widget') {
+            document.querySelector('.login-box').innerHTML = '<h2>Widget Editor Terbuka</h2><p>Buka browser console untuk melihat widget.js</p>';
+        }
+    </script>
+</body>
+</html>
